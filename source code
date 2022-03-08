@@ -1,0 +1,104 @@
+
+# Solutions
+/* Two Sum */
+public int[] twoSum(int[] numbers, int target) {
+    int[] result = new int[2];
+    Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+    for (int i = 0; i < numbers.length; i++) {
+        if (map.containsKey(target - numbers[i])) {
+            result[1] = i;
+            result[0] = map.get(target - numbers[i]);
+            return result;
+        }
+        map.put(numbers[i], i);
+    }
+    return result;
+}
+// Time = o(n) 
+// Space = 0(n)
+// other way using 2 loops o(n^2)
+# Q1
+// Frequency of the words in stirng
+    static void count_freq(String str)
+    {
+        Map<String,Integer> mp=new TreeMap<>();
+        String arr[]=str.split(" ");
+        for(int i=0;i<arr.length;i++)
+        {
+            if(mp.containsKey(arr[i]))
+            {
+                mp.put(arr[i], mp.get(arr[i])+1);
+            }
+            else
+            {
+                mp.put(arr[i],1);
+            }
+        }
+        for(Map.Entry<String,Integer> entry:
+                    mp.entrySet())
+        {
+            System.out.println(entry.getKey()+
+                    " - "+entry.getValue());
+        }
+    }
+
+// Time -: nlogn
+// Space -: n
+# Q2
+// max and second max element of array
+public static void topTwo(int[] numbers) {
+        int max1 = Integer.MIN_VALUE;
+        int max2 = Integer.MIN_VALUE;
+        for (int number : numbers) {
+            if (number > max1) {
+                max2 = max1;
+                max1 = number;
+            } else if (number > max2) {
+                max2 = number;
+            }
+        }
+}
+// time o(N)
+// space constent
+
+#Q3
+// str1 = I am Piyush Joshi
+// str 2 = this is MY name is Piyush Piyush joshi joshi ya that's me , I am Piyush.
+// Question all the words in str2 which are present in str1, print them with their frequency.
+  public static void isWordPresentOrNot(String str1, String str2){
+        String []s = str2.split(" ");
+        Map<String, Integer> map = new HashMap<>();
+        for(String t: s){
+            if(str1.contains(t))
+            {
+                if(map.containsKey(t))
+                    map.put(t,map.get(t)+1);
+                else
+                    map.put(t,1);
+            }
+        }
+        for(Map.Entry<String,Integer> entry: map.entrySet() )
+            System.out.println(entry.getKey() + " " + entry.getValue());
+    }
+
+# Q4
+// kth smallest element in array
+
+    static void kthSmallest(int []v, int N, int K)
+    {
+        Queue<Integer> heap1 = new PriorityQueue<Integer>(Collections.reverserOrder());
+     
+        for (int i = 0; i < N; ++i) {
+     
+            heap1.add(v[i]);
+            if (heap1.size() > K) {
+                heap1.remove();
+            }
+        }
+        System.out.print(heap1.peek() +"\n");
+    }
+
+// Time :- O(nlogk) where logk is height of the heap
+// Space :- k where k is size of the heap 
+
+# THE END
